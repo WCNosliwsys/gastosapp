@@ -17,11 +17,14 @@ class ItemGastoWidget extends StatelessWidget {
           width: 50,
           height: 50,
         ),
-        title: Text(
-          "Compras en el super",
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
+        title: MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          child: Text(
+            "Compras en el super",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
         subtitle: Text(

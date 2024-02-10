@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gastosappg7/widgets/item_gasto_widget.dart';
+import 'package:gastosappg7/widgets/texfield_normal_widget.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -79,27 +80,7 @@ class HomePage extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 16),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: "Buscar por título",
-                                  hintStyle: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black.withOpacity(0.40),
-                                  ),
-                                  filled: true,
-                                  fillColor:
-                                      Color(0xff101321).withOpacity(0.05),
-                                  contentPadding: EdgeInsets.all(12),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(16),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(16),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                ),
-                              ),
+                              child: TextFieldNormalWidget(),
                             ),
                             ItemGastoWidget(),
                             ItemGastoWidget(),
