@@ -35,9 +35,16 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
                 ),
                 Divider(),
-                TextFieldNormalWidget(),
-                TextFieldNormalWidget(),
-                TextFieldNormalWidget(),
+                TextFieldNormalWidget(
+                  hintText: "Ingresa un título",
+                ),
+                TextFieldNormalWidget(
+                  hintText: "Ingresa el precio",
+                  isNumber: true,
+                ),
+                TextFieldNormalWidget(
+                  hintText: "Selecciona la fecha",
+                ),
                 SizedBox(
                   height: 20,
                 ),
@@ -144,7 +151,9 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 16),
-                              child: TextFieldNormalWidget(),
+                              child: TextFieldNormalWidget(
+                                hintText: "Buscar por título",
+                              ),
                             ),
                             ItemGastoWidget(),
                             ItemGastoWidget(),
