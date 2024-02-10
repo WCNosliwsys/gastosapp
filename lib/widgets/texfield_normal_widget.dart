@@ -5,11 +5,14 @@ class TextFieldNormalWidget extends StatelessWidget {
   bool isNumber = false;
   bool isDatePicker = false;
   VoidCallback? onTap;
+  TextEditingController controller;
+
   TextFieldNormalWidget({
     required this.hintText,
     this.isNumber = false,
     this.isDatePicker = false,
     this.onTap,
+    required this.controller,
   });
 
   @override
@@ -17,6 +20,7 @@ class TextFieldNormalWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: TextField(
+        controller: controller,
         // enabled: true,
         readOnly: isDatePicker,
         onTap: onTap,

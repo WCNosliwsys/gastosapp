@@ -8,13 +8,36 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  showDateTimePicker() {
-    showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2020),
-      lastDate: DateTime(2030),
-    );
+  TextEditingController _searchController = TextEditingController();
+  TextEditingController _titleController = TextEditingController();
+  TextEditingController _priceController = TextEditingController();
+  TextEditingController _dateController = TextEditingController();
+
+  showDateTimePicker() async {
+    DateTime? datepicker = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2020),
+        lastDate: DateTime(2030),
+        builder: (BuildContext context, Widget? child) {
+          return Theme(
+            data: ThemeData.light().copyWith(
+                colorScheme: ColorScheme.light(
+                  primary: Color(0xff101321),
+                ),
+                dialogTheme: DialogTheme(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24.0),
+                  ),
+                )),
+            child: child!,
+          );
+        });
+    print(datepicker);
+    if (datepicker != null) {
+      _dateController.text = datepicker.toString();
+      setState(() {});
+    }
   }
 
   showModalRegister() {
@@ -46,10 +69,12 @@ class _HomePageState extends State<HomePage> {
                 Divider(),
                 TextFieldNormalWidget(
                   hintText: "Ingresa un título",
+                  controller: _titleController,
                 ),
                 TextFieldNormalWidget(
                   hintText: "Ingresa el precio",
                   isNumber: true,
+                  controller: _priceController,
                 ),
                 TextFieldNormalWidget(
                   hintText: "Selecciona la fecha",
@@ -58,6 +83,7 @@ class _HomePageState extends State<HomePage> {
                     print("este es el datepicjer");
                     showDateTimePicker();
                   },
+                  controller: _dateController,
                 ),
                 SizedBox(
                   height: 20,
@@ -167,6 +193,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               child: TextFieldNormalWidget(
                                 hintText: "Buscar por título",
+                                controller: _searchController,
                               ),
                             ),
                             ItemGastoWidget(),
