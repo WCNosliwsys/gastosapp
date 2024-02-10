@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gastosappg7/utils/data_general.dart';
 import 'package:gastosappg7/widgets/item_gasto_widget.dart';
+import 'package:gastosappg7/widgets/item_type_widget.dart';
 import 'package:gastosappg7/widgets/texfield_normal_widget.dart';
 import 'package:intl/intl.dart';
 
@@ -91,23 +93,19 @@ class _HomePageState extends State<HomePage> {
                   },
                   controller: _dateController,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                  decoration: BoxDecoration(
-                    color: Color(0xff101321).withOpacity(0.05),
-                    borderRadius: BorderRadius.circular(14.0),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(
-                        "assets/icons/alimentos.png",
-                        height: 40,
-                        width: 40,
-                      ),
-                      Text("Alimentos")
-                    ],
-                  ),
+                SizedBox(
+                  height: 16,
+                ),
+                Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 8.0,
+                  runSpacing: 10.0,
+                  children: types
+                      .map((e) => ItemTypeWidget(
+                            assetPath: e["image"],
+                            title: e["name"],
+                          ))
+                      .toList(),
                 ),
                 SizedBox(
                   height: 20,
