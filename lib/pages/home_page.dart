@@ -2,7 +2,55 @@ import 'package:flutter/material.dart';
 import 'package:gastosappg7/widgets/item_gasto_widget.dart';
 import 'package:gastosappg7/widgets/texfield_normal_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  showModalRegister() {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.all(24),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(34),
+              topRight: Radius.circular(34),
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFieldNormalWidget(),
+              TextFieldNormalWidget(),
+              TextFieldNormalWidget(),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: Text("Agregar"),
+                ),
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +63,7 @@ class HomePage extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     print("presionado");
+                    showModalRegister();
                   },
                   child: Container(
                     alignment: Alignment.bottomCenter,
