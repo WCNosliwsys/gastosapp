@@ -10,41 +10,56 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   showModalRegister() {
     showModalBottomSheet(
+      isScrollControlled: true,
       backgroundColor: Colors.transparent,
       context: context,
       builder: (BuildContext context) {
-        return Container(
-          padding: EdgeInsets.all(24),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(34),
-              topRight: Radius.circular(34),
-            ),
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextFieldNormalWidget(),
-              TextFieldNormalWidget(),
-              TextFieldNormalWidget(),
-              SizedBox(
-                height: 20,
+          child: Container(
+            padding: EdgeInsets.all(24),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(34),
+                topRight: Radius.circular(34),
               ),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Registrar salida",
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+                ),
+                Divider(),
+                TextFieldNormalWidget(),
+                TextFieldNormalWidget(),
+                TextFieldNormalWidget(),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff101321),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      "Agregar",
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
-                  onPressed: () {},
-                  child: Text("Agregar"),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         );
       },
