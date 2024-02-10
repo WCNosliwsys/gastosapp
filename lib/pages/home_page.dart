@@ -102,8 +102,8 @@ class _HomePageState extends State<HomePage> {
                   runSpacing: 10.0,
                   children: types
                       .map((e) => ItemTypeWidget(
-                            assetPath: e["image"],
-                            title: e["name"],
+                            type: e,
+                            isSelected: true,
                           ))
                       .toList(),
                 ),
