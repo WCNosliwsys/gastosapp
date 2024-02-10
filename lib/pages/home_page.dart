@@ -91,6 +91,24 @@ class _HomePageState extends State<HomePage> {
                   },
                   controller: _dateController,
                 ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: Color(0xff101321).withOpacity(0.05),
+                    borderRadius: BorderRadius.circular(14.0),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Image.asset(
+                        "assets/icons/alimentos.png",
+                        height: 40,
+                        width: 40,
+                      ),
+                      Text("Alimentos")
+                    ],
+                  ),
+                ),
                 SizedBox(
                   height: 20,
                 ),
