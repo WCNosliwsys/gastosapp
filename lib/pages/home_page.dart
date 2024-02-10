@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gastosappg7/widgets/item_gasto_widget.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -35,6 +36,7 @@ class HomePage extends StatelessWidget {
                       color: Colors.white,
                     ),
                     child: SingleChildScrollView(
+                      physics: BouncingScrollPhysics(),
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
@@ -52,30 +54,34 @@ class HomePage extends StatelessWidget {
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black45),
                             ),
-                            ListTile(
-                              leading: CircleAvatar(),
-                              title: Text(
-                                "Compras en el super",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w700,
+                            TextField(
+                              decoration: InputDecoration(
+                                hintText: "Buscar por título",
+                                hintStyle: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black.withOpacity(0.40),
                                 ),
-                              ),
-                              subtitle: Text(
-                                "09/02/2024 22:21",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
+                                filled: true,
+                                fillColor: Color(0xff101321).withOpacity(0.05),
+                                contentPadding: EdgeInsets.all(12),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide.none,
                                 ),
-                              ),
-                              trailing: Text(
-                                "S/ 402.00",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  borderSide: BorderSide.none,
                                 ),
                               ),
                             ),
+                            ItemGastoWidget(),
+                            ItemGastoWidget(),
+                            ItemGastoWidget(),
+                            ItemGastoWidget(),
+                            ItemGastoWidget(),
+                            ItemGastoWidget(),
+                            ItemGastoWidget(),
+                            ItemGastoWidget(),
                           ],
                         ),
                       ),
