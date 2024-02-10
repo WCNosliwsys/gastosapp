@@ -88,22 +88,23 @@ class _RegisterModalState extends State<RegisterModal> {
             height: 16,
           ),
           Wrap(
-            alignment: WrapAlignment.center,
-            spacing: 8.0,
-            runSpacing: 10.0,
-            children: types
-                .map((e) => ItemTypeWidget(
-                      type: e,
-                      isSelected: e["name"] == typeSelected,
-                      onTap: () {
-                        typeSelected = e["name"];
-                        print("Hola");
-                        print(typeSelected);
-                        setState(() {});
-                      },
-                    ))
-                .toList(),
-          ),
+              alignment: WrapAlignment.center,
+              spacing: 8.0,
+              runSpacing: 10.0,
+              children: [
+                ...types
+                    .map((e) => ItemTypeWidget(
+                          type: e,
+                          isSelected: e["name"] == typeSelected,
+                          onTap: () {
+                            typeSelected = e["name"];
+                            print("Hola");
+                            print(typeSelected);
+                            setState(() {});
+                          },
+                        ))
+                    .toList(),
+              ]),
           SizedBox(
             height: 20,
           ),
