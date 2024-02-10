@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gastosappg7/widgets/item_gasto_widget.dart';
 import 'package:gastosappg7/widgets/texfield_normal_widget.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -34,8 +35,13 @@ class _HomePageState extends State<HomePage> {
           );
         });
     print(datepicker);
+    // if (datepicker != null) {
+    //   _dateController.text = datepicker.toString();
+    //   setState(() {});
+    // }
     if (datepicker != null) {
-      _dateController.text = datepicker.toString();
+      final DateFormat _formatter = DateFormat("dd/MM/yyyy");
+      _dateController.text = _formatter.format(datepicker);
       setState(() {});
     }
   }
@@ -115,6 +121,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // final DateTime now = DateTime.now();
+    // print(now);
+    // final DateFormat formatter = DateFormat('dd-MM-yyyy');
+    // final String formatted = formatter.format(now);
+    // print(formatted);
     return Scaffold(
       body: SafeArea(
         child: Stack(
