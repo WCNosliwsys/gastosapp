@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 class TextFieldNormalWidget extends StatelessWidget {
   String hintText;
   bool isNumber = false;
+  bool isDatePicker = false;
+  VoidCallback? onTap;
   TextFieldNormalWidget({
     required this.hintText,
     this.isNumber = false,
+    this.isDatePicker = false,
+    this.onTap,
   });
 
   @override
@@ -13,6 +17,9 @@ class TextFieldNormalWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: TextField(
+        // enabled: true,
+        readOnly: isDatePicker,
+        onTap: onTap,
         keyboardType: isNumber ? TextInputType.number : TextInputType.text,
         decoration: InputDecoration(
           hintText: hintText,

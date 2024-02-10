@@ -8,6 +8,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  showDateTimePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2030),
+    );
+  }
+
   showModalRegister() {
     showModalBottomSheet(
       isScrollControlled: true,
@@ -44,6 +53,11 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextFieldNormalWidget(
                   hintText: "Selecciona la fecha",
+                  isDatePicker: true,
+                  onTap: () {
+                    print("este es el datepicjer");
+                    showDateTimePicker();
+                  },
                 ),
                 SizedBox(
                   height: 20,
