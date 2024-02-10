@@ -16,9 +16,32 @@ class HomePage extends StatelessWidget {
                     print("presionado");
                   },
                   child: Container(
+                    alignment: Alignment.bottomCenter,
                     color: Color(0xff101321),
                     width: double.infinity,
                     height: 120,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 24),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.add,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "Agregar",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 )
               ],
@@ -54,23 +77,27 @@ class HomePage extends StatelessWidget {
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black45),
                             ),
-                            TextField(
-                              decoration: InputDecoration(
-                                hintText: "Buscar por título",
-                                hintStyle: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.black.withOpacity(0.40),
-                                ),
-                                filled: true,
-                                fillColor: Color(0xff101321).withOpacity(0.05),
-                                contentPadding: EdgeInsets.all(12),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                  borderSide: BorderSide.none,
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                  borderSide: BorderSide.none,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 16),
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  hintText: "Buscar por título",
+                                  hintStyle: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black.withOpacity(0.40),
+                                  ),
+                                  filled: true,
+                                  fillColor:
+                                      Color(0xff101321).withOpacity(0.05),
+                                  contentPadding: EdgeInsets.all(12),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                    borderSide: BorderSide.none,
+                                  ),
                                 ),
                               ),
                             ),

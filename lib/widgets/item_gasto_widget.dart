@@ -12,7 +12,11 @@ class ItemGastoWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: ListTile(
-        leading: CircleAvatar(),
+        leading: Image.asset(
+          "assets/icons/alimentos.png",
+          width: 50,
+          height: 50,
+        ),
         title: Text(
           "Compras en el super",
           style: TextStyle(
