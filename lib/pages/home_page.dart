@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gastosappg7/db/db_admin.dart';
 import 'package:gastosappg7/modals/register_form_modal.dart';
 import 'package:gastosappg7/utils/data_general.dart';
 import 'package:gastosappg7/widgets/item_gasto_widget.dart';
@@ -46,7 +47,9 @@ class _HomePageState extends State<HomePage> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    print("presionado");
+                    DBAdmin dbAdmin = DBAdmin();
+                    dbAdmin.initDatabase();
+                    print("iniciando bd.....");
                     showModalRegister();
                   },
                   child: Container(
