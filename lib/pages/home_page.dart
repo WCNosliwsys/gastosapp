@@ -47,10 +47,15 @@ class _HomePageState extends State<HomePage> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    DBAdmin dbAdmin = DBAdmin();
-                    dbAdmin.initDatabase();
+                    // DBAdmin dbAdmin = DBAdmin();
+
+                    // dbAdmin.initDatabase();
+                    // print(dbAdmin.checkDatabase());
                     print("iniciando bd.....");
-                    showModalRegister();
+                    DBAdmin().obtenerGastos();
+                    // dbAdmin.obtenerGastos();
+                    // dbAdmin.insertarGasto();
+                    // showModalRegister();
                   },
                   child: Container(
                     alignment: Alignment.bottomCenter,
