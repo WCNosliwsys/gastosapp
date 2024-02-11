@@ -130,6 +130,17 @@ class _RegisterModalState extends State<RegisterModal> {
                 DBAdmin().insertarGasto(gasto).then((value) {
                   if (value > 0) {
                     //insertó correctamente
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.cyan,
+                        behavior: SnackBarBehavior.floating,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        content: Text("Se registró correctamente"),
+                      ),
+                    );
+                    Navigator.pop(context);
                   } else {
                     //poner algun mensaje para indicar que no se insertó correctamente
                   }
