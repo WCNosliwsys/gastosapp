@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gastosappg7/models/gasto_model.dart';
 
 class ItemGastoWidget extends StatelessWidget {
-  const ItemGastoWidget({super.key});
+  Map data;
+  ItemGastoWidget({
+    required this.data,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class ItemGastoWidget extends StatelessWidget {
         title: MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
           child: Text(
-            "Compras en el super",
+            data["title"],
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w700,

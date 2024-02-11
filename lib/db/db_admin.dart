@@ -53,13 +53,13 @@ class DBAdmin {
   }
 
   //OBTENER DATOS
-  obtenerGastos() async {
+  Future<List<Map>> obtenerGastos() async {
     Database? db = await checkDatabase();
-    List data = await db!.query("GASTOS");
+    List<Map> data = await db!.query("GASTOS");
     // List data = await db!.rawQuery("SELECT TITLE, PRICE FROM GASTOS");
     // List data = await db!.query("GASTOS", where: "TYPE='Alimentos'");
-
-    print(data);
+    // print(data);
+    return data;
   }
 
   //INSERTAR GASTO

@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController _searchController = TextEditingController();
+  List<Map> gastosList = [];
 
   showModalRegister() {
     showModalBottomSheet(
@@ -31,8 +32,21 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Future<void> getDataGeneral() async {
+    gastosList = await DBAdmin().obtenerGastos();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getDataGeneral();
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(gastosList);
     // final DateTime now = DateTime.now();
     // print(now);
     // final DateFormat formatter = DateFormat('dd-MM-yyyy');
@@ -119,14 +133,16 @@ class _HomePageState extends State<HomePage> {
                                 controller: _searchController,
                               ),
                             ),
-                            ItemGastoWidget(),
-                            ItemGastoWidget(),
-                            ItemGastoWidget(),
-                            ItemGastoWidget(),
-                            ItemGastoWidget(),
-                            ItemGastoWidget(),
-                            ItemGastoWidget(),
-                            ItemGastoWidget(),
+                            ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: gastosList.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return ItemGastoWidget(
+                                  data: gastosList[index],
+                                );
+                              },
+                            ),
                           ],
                         ),
                       ),
