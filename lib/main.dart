@@ -6,7 +6,7 @@ import 'package:gastosappg7/pages/page.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: PagePage(),
+      home: HomePage(),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
