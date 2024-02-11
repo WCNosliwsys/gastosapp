@@ -63,16 +63,19 @@ class DBAdmin {
   }
 
   //INSERTAR GASTO
-  insertarGasto(GastoModel gasto) async {
+  Future<int> insertarGasto(GastoModel gasto) async {
     Database? db = await checkDatabase();
-    int res = await db!.insert("GASTOS", {
-      "title": gasto.title,
-      "price": gasto.price,
-      "datetime": gasto.dateTime,
-      "type": gasto.type
-    });
+    int res = await db!.insert("GASTOS", gasto.convertirAMap()
 
-    print(res);
+        // {
+        //   "title": gasto.title,
+        //   "price": gasto.price,
+        //   "datetime": gasto.dateTime,
+        //   "type": gasto.type
+        // }
+        );
+    return res;
+    // print(res);
   }
 
   //ACTUALIZAR GASTO
