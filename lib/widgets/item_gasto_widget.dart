@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gastosappg7/models/gasto_model.dart';
 
 class ItemGastoWidget extends StatelessWidget {
-  Map data;
+  GastoModel data;
   ItemGastoWidget({
     required this.data,
   });
@@ -24,7 +24,7 @@ class ItemGastoWidget extends StatelessWidget {
         title: MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
           child: Text(
-            data["title"],
+            data.title,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w700,
@@ -32,14 +32,14 @@ class ItemGastoWidget extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          "09/02/2024 22:21",
+          data.dateTime,
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w400,
           ),
         ),
         trailing: Text(
-          "S/ 402.00",
+          "S/ ${data.price}",
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w700,

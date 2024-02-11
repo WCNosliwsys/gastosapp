@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gastosappg7/db/db_admin.dart';
 import 'package:gastosappg7/modals/register_form_modal.dart';
+import 'package:gastosappg7/models/gasto_model.dart';
 import 'package:gastosappg7/utils/data_general.dart';
 import 'package:gastosappg7/widgets/item_gasto_widget.dart';
 import 'package:gastosappg7/widgets/item_type_widget.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController _searchController = TextEditingController();
-  List<Map> gastosList = [];
+  List<GastoModel> gastosList = [];
 
   showModalRegister() {
     showModalBottomSheet(
