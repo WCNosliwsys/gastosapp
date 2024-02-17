@@ -58,7 +58,7 @@ class DBAdmin {
     List<Map<String, dynamic>> data = await db!.query("GASTOS");
     // List data = await db!.rawQuery("SELECT TITLE, PRICE FROM GASTOS");
     // List data = await db!.query("GASTOS", where: "TYPE='Alimentos'");
-    // print(data);
+    print(data);
     List<GastoModel> gastosLista =
         data.map((e) => GastoModel.convertirDeMapaAModelo(e)).toList();
 
@@ -92,6 +92,25 @@ class DBAdmin {
   }
 
   //ACTUALIZAR GASTO
+  Future<int> updGasto(int? id) async {
+    Database? db = await checkDatabase();
+    int res = await db!.update(
+      "GASTOS",
+      {"title": "ACTUALIZADO"},
+      where: "id=$id",
+    );
+    return res;
+  }
 
   //ELIMINAR GASTO
+
+  Future<int> delGasto(int? id) async {
+    Database? db = await checkDatabase();
+    int res = await db!.delete(
+      "GASTOS",
+      where: 'id=$id',
+    );
+
+    return res;
+  }
 }

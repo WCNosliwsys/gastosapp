@@ -139,8 +139,16 @@ class _HomePageState extends State<HomePage> {
                               shrinkWrap: true,
                               itemCount: gastosList.length,
                               itemBuilder: (BuildContext context, int index) {
-                                return ItemGastoWidget(
-                                  data: gastosList[index],
+                                return GestureDetector(
+                                  onTap: () {
+                                    // print(gastosList[index].id);
+                                    DBAdmin().updGasto(gastosList[index].id);
+                                    DBAdmin().obtenerGastos();
+                                    setState(() {});
+                                  },
+                                  child: ItemGastoWidget(
+                                    data: gastosList[index],
+                                  ),
                                 );
                               },
                             ),
