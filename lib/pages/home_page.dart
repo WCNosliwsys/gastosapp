@@ -135,21 +135,26 @@ class _HomePageState extends State<HomePage> {
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               child: TextFieldNormalWidget(
-                                hintText: "Buscar por título",
-                                controller: _searchController,
-                              ),
+                                  hintText: "Buscar por título",
+                                  controller: _searchController),
                             ),
                             ListView.builder(
                               physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: gastosList.length,
                               itemBuilder: (BuildContext context, int index) {
+                                if (_searchController.text.isNotEmpty &&
+                                    !gastosList[index]
+                                        .title
+                                        .toLowerCase()
+                                        .contains(
+                                          _searchController.text.toLowerCase(),
+                                        )) {
+                                  return Container();
+                                }
                                 return GestureDetector(
                                   onTap: () {
-                                    // print(gastosList[index].id);
-
                                     DBAdmin().delGasto(gastosList[index].id);
-
                                     // DBAdmin().updGasto(gastosList[index].id);
                                     getDataGeneral();
                                     setState(() {});

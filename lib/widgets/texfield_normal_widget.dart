@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TextFieldNormalWidget extends StatelessWidget {
+class TextFieldNormalWidget extends StatefulWidget {
   String hintText;
   bool isNumber = false;
   bool isDatePicker = false;
@@ -16,17 +16,27 @@ class TextFieldNormalWidget extends StatelessWidget {
   });
 
   @override
+  State<TextFieldNormalWidget> createState() => _TextFieldNormalWidgetState();
+}
+
+class _TextFieldNormalWidgetState extends State<TextFieldNormalWidget> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: TextField(
-        controller: controller,
+        controller: widget.controller,
         // enabled: true,
-        readOnly: isDatePicker,
-        onTap: onTap,
-        keyboardType: isNumber ? TextInputType.number : TextInputType.text,
+        readOnly: widget.isDatePicker,
+        onTap: widget.onTap,
+        keyboardType:
+            widget.isNumber ? TextInputType.number : TextInputType.text,
+        onChanged: (text) {
+          setState(() {});
+          print(text);
+        },
         decoration: InputDecoration(
-          hintText: hintText,
+          hintText: widget.hintText,
           hintStyle: TextStyle(
             fontSize: 14,
             color: Colors.black.withOpacity(0.40),
