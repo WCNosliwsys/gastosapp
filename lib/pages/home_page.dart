@@ -30,7 +30,12 @@ class _HomePageState extends State<HomePage> {
           child: RegisterModal(),
         );
       },
-    );
+    ).then((value) {
+      print("-----------------------------");
+      // print("HOLA");
+      getDataGeneral();
+      setState(() {});
+    });
   }
 
   Future<void> getDataGeneral() async {
@@ -47,7 +52,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print(gastosList);
+    // print(gastosList);
     // final DateTime now = DateTime.now();
     // print(now);
     // final DateFormat formatter = DateFormat('dd-MM-yyyy');
@@ -142,8 +147,11 @@ class _HomePageState extends State<HomePage> {
                                 return GestureDetector(
                                   onTap: () {
                                     // print(gastosList[index].id);
-                                    DBAdmin().updGasto(gastosList[index].id);
-                                    DBAdmin().obtenerGastos();
+
+                                    DBAdmin().delGasto(gastosList[index].id);
+
+                                    // DBAdmin().updGasto(gastosList[index].id);
+                                    getDataGeneral();
                                     setState(() {});
                                   },
                                   child: ItemGastoWidget(

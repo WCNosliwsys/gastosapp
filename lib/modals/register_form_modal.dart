@@ -37,7 +37,7 @@ class _RegisterModalState extends State<RegisterModal> {
             child: child!,
           );
         });
-    print(datepicker);
+    // print(datepicker);
     // if (datepicker != null) {
     //   _dateController.text = datepicker.toString();
     //   setState(() {});
@@ -81,7 +81,7 @@ class _RegisterModalState extends State<RegisterModal> {
             hintText: "Selecciona la fecha",
             isDatePicker: true,
             onTap: () {
-              print("este es el datepicjer");
+              // print("este es el datepicjer");
               showDateTimePicker();
             },
             controller: _dateController,
@@ -100,8 +100,8 @@ class _RegisterModalState extends State<RegisterModal> {
                           isSelected: e["name"] == typeSelected,
                           onTap: () {
                             typeSelected = e["name"];
-                            print("Hola");
-                            print(typeSelected);
+                            // print("Hola");
+                            // print(typeSelected);
                             setState(() {});
                           },
                         ))
