@@ -37,10 +37,12 @@ class _HomePageState extends State<HomePage> {
       setState(() {});
     });
   }
+List<GastoModel> _todosLosGastos = [];
 
   Future<void> getDataGeneral() async {
-    gastosList = await DBAdmin().obtenerGastos();
-    setState(() {});
+    _todosLosGastos = await DBAdmin().obtenerGastos();
+  gastosList = List.from(_todosLosGastos); 
+  setState(() {});
   }
 
   @override
@@ -49,6 +51,18 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
   }
+
+void filtrarGastos(String searchText) {
+  if (searchText.isNotEmpty) {
+    gastosList = _todosLosGastos.where((gasto) {
+      return gasto.title.toLowerCase().contains(searchText.toLowerCase());
+    }).toList();
+  } else {
+    gastosList = List.from(_todosLosGastos); 
+  }
+
+  setState(() {}); 
+}
 
   @override
   Widget build(BuildContext context) {
@@ -89,10 +103,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             "Agregar",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700),
+                            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
                           ),
                         ],
                       ),
@@ -122,21 +133,21 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               "Resumen de gastos",
-                              style: TextStyle(
-                                  fontSize: 28, fontWeight: FontWeight.bold),
+                              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               "Gestiona tus gastos de la mejor forma",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black45),
+                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Colors.black45),
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               child: TextFieldNormalWidget(
-                                  hintText: "Buscar por título",
-                                  controller: _searchController),
+                                hintText: "Buscar por título",
+                                controller: _searchController,
+                                onTextChanged: (text) {
+                                  filtrarGastos(text); 
+                                },
+                              ),
                             ),
                             ListView.builder(
                               physics: NeverScrollableScrollPhysics(),
@@ -144,10 +155,7 @@ class _HomePageState extends State<HomePage> {
                               itemCount: gastosList.length,
                               itemBuilder: (BuildContext context, int index) {
                                 if (_searchController.text.isNotEmpty &&
-                                    !gastosList[index]
-                                        .title
-                                        .toLowerCase()
-                                        .contains(
+                                    !gastosList[index].title.toLowerCase().contains(
                                           _searchController.text.toLowerCase(),
                                         )) {
                                   return Container();

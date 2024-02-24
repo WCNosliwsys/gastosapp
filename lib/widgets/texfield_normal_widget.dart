@@ -6,6 +6,7 @@ class TextFieldNormalWidget extends StatefulWidget {
   bool isDatePicker = false;
   VoidCallback? onTap;
   TextEditingController controller;
+  final Function(String)? onTextChanged;
 
   TextFieldNormalWidget({
     required this.hintText,
@@ -13,6 +14,7 @@ class TextFieldNormalWidget extends StatefulWidget {
     this.isDatePicker = false,
     this.onTap,
     required this.controller,
+    this.onTextChanged,
   });
 
   @override
@@ -29,9 +31,11 @@ class _TextFieldNormalWidgetState extends State<TextFieldNormalWidget> {
         // enabled: true,
         readOnly: widget.isDatePicker,
         onTap: widget.onTap,
-        keyboardType:
-            widget.isNumber ? TextInputType.number : TextInputType.text,
+        keyboardType: widget.isNumber ? TextInputType.number : TextInputType.text,
         onChanged: (text) {
+          if (widget.onTextChanged != null) {
+            widget.onTextChanged!(text);
+          }
           setState(() {});
           print(text);
         },
